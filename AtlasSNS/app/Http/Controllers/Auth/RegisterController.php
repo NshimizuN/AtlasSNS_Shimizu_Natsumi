@@ -69,14 +69,19 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
+    //auth認証
+    public function redirectPath()
+    {
+        return '/index';
+    }
 
     // public function registerForm(){
     //     return view("auth.register");
     // }
 
-    public function register(Request $request){
-        if($request->isMethod('post')){
+    public function register(Request $request)
+    {
+        if ($request->isMethod('post')) {
             $data = $request->input();
 
             $this->create($data);
@@ -85,7 +90,8 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function added(){
+    public function added()
+    {
         return view('auth.added');
     }
 }
